@@ -1,2 +1,2 @@
-# dapoerarna
+# Dapoer Arna
 projek penulisan ilmiah
