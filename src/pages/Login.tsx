@@ -1,76 +1,91 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import Button from '../components/ui/Button'; // Komponen button yang sudah ada
+
+// Data pengguna (misalnya user biasa dan admin)
+const users = [
+  {
+    email: "user@example.com",
+    password: "password123",
+    role: "user", // Pengguna biasa
+  },
+  {
+    email: "admin@example.com",
+    password: "admin123",
+    role: "admin", // Admin
+  },
+];
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
+  // Fungsi untuk menangani login
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
+    setError('');
 
-    // Validasi sederhana
-    if (!email || !password) {
-      setError('Please enter both email and password');
-      return;
+    // Cari user berdasarkan email
+    const user = users.find(
+      (u) => u.email === email && u.password === password
+    );
+
+    if (user) {
+      // Jika ditemukan, arahkan ke halaman yang sesuai
+      if (user.role === "admin") {
+        navigate("/admin/dashboard"); // Halaman dashboard admin
+      } else {
+        navigate("/home"); // Halaman home untuk user biasa
+      }
+    } else {
+      // Jika tidak ditemukan, tampilkan pesan error
+      setError('Email atau password salah');
     }
-
-    console.log('Login attempt:', { email, password });
-    localStorage.setItem('user', JSON.stringify({ email }));
-    window.location.href = '/';
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-md w-96 login-form"> {/* Tambahkan kelas login-form */}
-        <h2 className="text-2xl font-bold text-center text-orange-500 mb-6">Login</h2>
-
-        {/* Error Message */}
-        {error && (
-          <div className="bg-red-100 text-red-700 p-2 rounded mb-4 text-center">
-            {error}
-          </div>
-        )}
-
-        <form onSubmit={handleLogin} className="space-y-4">
-          <div>
-            <label htmlFor="email" className="block text-gray-700">Email</label>
+    <div className="min-h-screen flex items-center justify-center px-4 py-12">
+      <div className="max-w-md w-full bg-white p-8 rounded-lg shadow-md">
+        <h2 className="text-2xl font-bold mb-4">Login</h2>
+        <form onSubmit={handleLogin}>
+          <div className="mb-4">
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              Email
+            </label>
             <input
               type="email"
               id="email"
-              name="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
-              placeholder="Enter your email"
+              className="w-full p-3 border border-gray-300 rounded-lg"
+              required
             />
           </div>
-
-          <div>
-            <label htmlFor="password" className="block text-gray-700">Password</label>
+          <div className="mb-4">
+            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+              Password
+            </label>
             <input
               type="password"
               id="password"
-              name="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
-              placeholder="Enter your password"
+              className="w-full p-3 border border-gray-300 rounded-lg"
+              required
             />
           </div>
-
-          <button
-            type="submit"
-            className="w-full py-3 bg-orange-500 text-white rounded-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500"
-          >
-            Login
-          </button>
+          {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
+          <Button variant="primary" type="submit" size="lg" fullWidth>
+            Masuk
+          </Button>
         </form>
-
-        <div className="mt-4 text-center">
-          <span className="text-gray-600">Don't have an account? </span>
-          <Link to="/signup" className="text-orange-500 font-semibold">Sign up</Link>
-        </div>
+        
+        {/* Link Sign Up */}
+        <p className="mt-4 text-center text-sm">
+          Belum punya akun? <a href="/signup" className="text-blue-500 hover:underline">Sign Up</a>
+        </p>
       </div>
     </div>
   );

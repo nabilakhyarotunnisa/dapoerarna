@@ -215,7 +215,7 @@ const Contact: React.FC = () => {
                     disabled={isSubmitting}
                     className={isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}
                   >
-                    {isSubmitting ? 'Mengirim...' : 'Send Message'}
+                    {isSubmitting ? 'Mengirim...' : 'Kirim Pesan'}
                   </Button>
                 </form>
               )}
@@ -223,18 +223,18 @@ const Contact: React.FC = () => {
             
             {/* Operating Hours */}
             <div>
-              <h2 className="text-2xl font-bold mb-6">Operating Hours</h2>
+              <h2 className="text-2xl font-bold mb-6">Jam Operasional</h2>
               
               <div className="bg-white rounded-lg shadow-md p-6">
                 <div className="space-y-4">
                   {[
-                    { day: 'Monday', hours: '10:00 AM - 10:00 PM' },
-                    { day: 'Tuesday', hours: '10:00 AM - 10:00 PM' },
-                    { day: 'Wednesday', hours: '10:00 AM - 10:00 PM' },
-                    { day: 'Thursday', hours: '10:00 AM - 10:00 PM' },
-                    { day: 'Friday', hours: '10:00 AM - 11:00 PM' },
-                    { day: 'Saturday', hours: '11:00 AM - 11:00 PM' },
-                    { day: 'Sunday', hours: '11:00 AM - 10:00 PM' }
+                    { day: 'Senin', hours: '10:00 AM - 10:00 PM' },
+                    { day: 'Selasa', hours: '10:00 AM - 10:00 PM' },
+                    { day: 'Rabu', hours: '10:00 AM - 10:00 PM' },
+                    { day: 'Kamis', hours: '10:00 AM - 10:00 PM' },
+                    { day: 'Jumat', hours: '10:00 AM - 11:00 PM' },
+                    { day: 'Sabtu', hours: '11:00 AM - 11:00 PM' },
+                    { day: 'Minggu', hours: '11:00 AM - 10:00 PM' }
                   ].map((item, index) => (
                     <div key={index} className="flex justify-between">
                       <span className="font-medium">{item.day}</span>
@@ -244,33 +244,6 @@ const Contact: React.FC = () => {
                 </div>
               </div>
               
-              <div className="mt-8">
-                <h2 className="text-2xl font-bold mb-6">FAQ</h2>
-                
-                <div className="bg-white rounded-lg shadow-md p-6">
-                  <div className="space-y-6">
-                    {[
-                      { 
-                        question: 'How far do you deliver?', 
-                        answer: 'We deliver within a 5-mile radius from our location to ensure your food arrives hot and fresh.' 
-                      },
-                      { 
-                        question: 'What payment methods do you accept?', 
-                        answer: 'We accept all major credit cards, PayPal, and cash on delivery.' 
-                      },
-                      { 
-                        question: 'Do you cater for events?', 
-                        answer: 'Yes! We offer catering services for events of all sizes. Please contact us for more information.' 
-                      }
-                    ].map((item, index) => (
-                      <div key={index}>
-                        <h3 className="font-semibold text-lg mb-2">{item.question}</h3>
-                        <p className="text-gray-700">{item.answer}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
