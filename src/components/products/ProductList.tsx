@@ -69,7 +69,7 @@ const ProductList: React.FC<ProductListProps> = ({
             onClick={loadMore}
             className="px-6 py-2 border border-gray-300 rounded-md shadow-sm text-base font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
           >
-            Load More
+            Muat Lebih Banyak
           </button>
         </div>
       )}

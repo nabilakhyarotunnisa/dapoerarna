@@ -8,25 +8,34 @@ import QuantitySelector from '../components/ui/QuantitySelector';
 import ProductList from '../components/products/ProductList';
 import Badge from '../components/ui/Badge';
 
+// Fungsi format harga Rupiah
+const formatRupiah = (number: number): string => {
+  return new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
+    minimumFractionDigits: 0,
+  }).format(number);
+};
+
 const ProductDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
-  
+
   const product = products.find(p => p.id === Number(id));
-  
+
   // If product not found, redirect to menu
   useEffect(() => {
     if (!product && id) {
       navigate('/menu');
     }
   }, [product, id, navigate]);
-  
+
   if (!product) {
     return null;
   }
-  
+
   const handleAddToCart = () => {
     for (let i = 0; i < quantity; i++) {
       addToCart(product);
@@ -34,15 +43,15 @@ const ProductDetail: React.FC = () => {
     // Provide feedback that product was added
     // Could add a toast notification here
   };
-  
+
   const increaseQuantity = () => {
     setQuantity(q => Math.min(q + 1, 10));
   };
-  
+
   const decreaseQuantity = () => {
     setQuantity(q => Math.max(q - 1, 1));
   };
-  
+
   // Get similar products (same category, excluding current product)
   const similarProducts = products.filter(
     p => p.category === product.category && p.id !== product.id
@@ -58,7 +67,7 @@ const ProductDetail: React.FC = () => {
           <ChevronLeft size={20} />
           <span>Kembali</span>
         </button>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
           {/* Product Image */}
           <div className="rounded-lg overflow-hidden shadow-md h-96">
@@ -68,7 +77,7 @@ const ProductDetail: React.FC = () => {
               className="w-full h-full object-cover"
             />
           </div>
-          
+
           {/* Product Info */}
           <div className="flex flex-col">
             <div>
@@ -78,14 +87,15 @@ const ProductDetail: React.FC = () => {
                   <Badge variant="warning" className="ml-2">Populer</Badge>
                 )}
               </div>
-              
+
               <h1 className="text-3xl font-bold mb-2">{product.name}</h1>
               <p className="text-2xl text-orange-500 font-semibold mb-4">
-                ${product.price.toFixed(2)}
+                {/* Format harga dengan Rupiah */}
+                {formatRupiah(product.price)}
               </p>
               <p className="text-gray-700 mb-6">{product.description}</p>
             </div>
-            
+
             {/* Ingredients */}
             {product.ingredients && (
               <div className="mb-8">
@@ -100,7 +110,7 @@ const ProductDetail: React.FC = () => {
                 </ul>
               </div>
             )}
-            
+
             {/* Quantity and Add to Cart */}
             <div className="mt-auto">
               <div className="flex items-center space-x-4 mb-4">
@@ -111,9 +121,9 @@ const ProductDetail: React.FC = () => {
                   onDecrease={decreaseQuantity}
                 />
               </div>
-              
+
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button 
+                <Button
                   variant="primary"
                   size="lg"
                   fullWidth
@@ -123,7 +133,7 @@ const ProductDetail: React.FC = () => {
                   <ShoppingBag size={20} className="mr-2" />
                   Tambahkan Ke Keranjang
                 </Button>
-                <Button 
+                <Button
                   variant="outline"
                   size="lg"
                   fullWidth
@@ -135,7 +145,7 @@ const ProductDetail: React.FC = () => {
             </div>
           </div>
         </div>
-        
+
         {/* Similar Products */}
         {similarProducts.length > 0 && (
           <div className="mt-16">

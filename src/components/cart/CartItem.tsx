@@ -43,7 +43,7 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
       <div className="ml-4 flex flex-1 flex-col">
         <div className="flex justify-between text-base font-medium text-gray-900">
           <h3 className="line-clamp-1">{product.name}</h3>
-          <p className="ml-4">${itemTotal}</p>
+          <p className="ml-4">Rp.{itemTotal}</p>
         </div>
         <p className="mt-1 text-sm text-gray-500 line-clamp-1">{product.category}</p>
         
@@ -60,7 +60,7 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
             onClick={handleRemove}
           >
             <X size={16} className="mr-1" />
-            Remove
+            Buang
           </button>
         </div>
       </div>

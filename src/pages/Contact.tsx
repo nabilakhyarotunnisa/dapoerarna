@@ -72,10 +72,9 @@ const Contact: React.FC = () => {
       <section className="relative py-20 bg-orange-50">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl font-bold mb-6">Contact Us</h1>
+            <h1 className="text-4xl font-bold mb-6">Kontak Kami</h1>
             <p className="text-xl text-gray-700">
-              We'd love to hear from you! Whether you have a question, feedback, 
-              or just want to say hello, feel free to reach out to us.
+              Kami ingin sekali mendengar kabar dari Anda! Jika Anda memiliki pertanyaan, masukan, atau sekadar ingin menyapa, jangan ragu untuk menghubungi kami.
             </p>
           </div>
         </div>
@@ -89,8 +88,8 @@ const Contact: React.FC = () => {
               <div className="w-12 h-12 mx-auto mb-4 flex items-center justify-center rounded-full bg-orange-100">
                 <Phone className="text-orange-500" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Phone</h3>
-              <p className="text-gray-700">(555) 123-4567</p>
+              <h3 className="text-xl font-semibold mb-2">Telepon</h3>
+              <p className="text-gray-700">(+62) 851-5655-9581</p>
             </div>
             
             <div className="bg-white p-8 rounded-lg shadow-md text-center">
@@ -98,45 +97,45 @@ const Contact: React.FC = () => {
                 <Mail className="text-orange-500" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Email</h3>
-              <p className="text-gray-700">info@tastybites.com</p>
+              <p className="text-gray-700">daoerarna@gmail.com</p>
             </div>
             
             <div className="bg-white p-8 rounded-lg shadow-md text-center">
               <div className="w-12 h-12 mx-auto mb-4 flex items-center justify-center rounded-full bg-orange-100">
                 <MapPin className="text-orange-500" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Address</h3>
-              <p className="text-gray-700">123 Foodie Lane, Tasty Town</p>
+              <h3 className="text-xl font-semibold mb-2">Alamat</h3>
+              <p className="text-gray-700">Perumahan Taman Mutiara Parung Blok B No 12, Parung Bogor 16330</p>
             </div>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {/* Contact Form */}
             <div>
-              <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
+              <h2 className="text-2xl font-bold mb-6">Kirim Kami Pesan</h2>
               
               {isSubmitted ? (
                 <div className="bg-green-50 border border-green-200 rounded-lg p-6 text-center">
                   <div className="w-12 h-12 mx-auto mb-4 flex items-center justify-center rounded-full bg-green-100">
                     <Send className="text-green-600" />
                   </div>
-                  <h3 className="text-xl font-semibold text-green-800 mb-2">Message Sent!</h3>
+                  <h3 className="text-xl font-semibold text-green-800 mb-2">Pesan Terkirim!</h3>
                   <p className="text-green-700">
-                    Thank you for reaching out. We'll get back to you as soon as possible.
+                  Terima kasih telah menghubungi kami. Kami akan segera menghubungi Anda kembali.
                   </p>
                   <Button
                     variant="primary"
                     className="mt-4"
                     onClick={() => setIsSubmitted(false)}
                   >
-                    Send Another Message
+                    Kirim Pesan Lain
                   </Button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                      Name *
+                      Nama *
                     </label>
                     <input
                       type="text"
@@ -174,7 +173,7 @@ const Contact: React.FC = () => {
                   
                   <div>
                     <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
-                      Subject *
+                      Subjek *
                     </label>
                     <input
                       type="text"
@@ -193,7 +192,7 @@ const Contact: React.FC = () => {
                   
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                      Message *
+                      Pesan *
                     </label>
                     <textarea
                       id="message"
@@ -216,7 +215,7 @@ const Contact: React.FC = () => {
                     disabled={isSubmitting}
                     className={isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}
                   >
-                    {isSubmitting ? 'Sending...' : 'Send Message'}
+                    {isSubmitting ? 'Mengirim...' : 'Send Message'}
                   </Button>
                 </form>
               )}

@@ -6,6 +6,15 @@ import { useCart } from '../../context/CartContext';
 import Button from '../ui/Button';
 import Badge from '../ui/Badge';
 
+// Fungsi format harga Rupiah
+const formatRupiah = (number: number): string => {
+  return new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
+    minimumFractionDigits: 0,
+  }).format(number);
+};
+
 interface ProductCardProps {
   product: Product;
 }
@@ -20,8 +29,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   
   const handleAddToCart = (e: React.MouseEvent) => {
     e.stopPropagation();
+    console.log("Adding to cart:", product);
     addToCart(product);
-  };
+  };  
 
   return (
     <div 
@@ -41,7 +51,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         )}
         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
           <div className="text-white font-medium">
-            ${product.price.toFixed(2)}
+            {/* Format harga sebagai Rupiah */}
+            {formatRupiah(product.price)}
           </div>
         </div>
       </div>
@@ -55,11 +66,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <Button 
             variant="primary" 
             size="sm" 
-            onClick={handleAddToCart}
+            onClick={handleAddToCart} // Menambahkan ke keranjang
             className="flex items-center space-x-1"
           >
             <ShoppingBag size={16} />
-            <span>Add</span>
+            <span>Tambah</span>
           </Button>
         </div>
       </div>

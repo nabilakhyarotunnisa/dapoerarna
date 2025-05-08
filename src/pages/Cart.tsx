@@ -17,16 +17,16 @@ const Cart: React.FC = () => {
           <div className="w-20 h-20 mx-auto mb-6 flex items-center justify-center rounded-full bg-orange-100">
             <ShoppingBag size={32} className="text-orange-500" />
           </div>
-          <h1 className="text-2xl font-bold mb-2">Your Cart is Empty</h1>
+          <h1 className="text-2xl font-bold mb-2">Keranjang Anda Kosong</h1>
           <p className="text-gray-600 mb-6">
-            Looks like you haven't added any items to your cart yet.
+            Sepertinya Anda belum menambahkan barang apa pun ke keranjang belanja Anda.
           </p>
           <Button
             variant="primary"
             size="lg"
             onClick={() => window.location.href = '/menu'}
           >
-            Browse Menu
+            Mencari Menu
           </Button>
         </div>
       </div>
@@ -36,14 +36,14 @@ const Cart: React.FC = () => {
   return (
     <div className="min-h-screen pt-20">
       <div className="container mx-auto px-4 py-12">
-        <h1 className="text-3xl font-bold mb-8">Your Cart</h1>
+        <h1 className="text-3xl font-bold mb-8">Keranjang Anda</h1>
         
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Cart Items */}
           <div className="lg:col-span-2">
             <div className="bg-white rounded-lg shadow-sm p-6">
               <h2 className="text-lg font-medium text-gray-900 mb-6">
-                Cart Items ({cart.totalItems})
+              Item Keranjang ({cart.totalItems})
               </h2>
               
               <div className="divide-y divide-gray-200">
@@ -57,7 +57,7 @@ const Cart: React.FC = () => {
                   to="/menu"
                   className="text-orange-500 hover:text-orange-600 font-medium"
                 >
-                  Continue Shopping
+                  Lanjut Berbelanja
                 </Link>
               </div>
             </div>

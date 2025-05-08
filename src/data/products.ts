@@ -5,7 +5,7 @@ export const products: Product[] = [
     id: 1,
     name: "Bakso Polos",
     description: "Bakso yang dibuat dengan daging sapi yang higenis dan kenyal teksturnya.",
-    price: 10.000,
+    price: 10000,
     image: "https://akcdn.detik.net.id/community/media/visual/2019/08/12/dca21bf3-923c-486f-bc2e-a3dcd759b1df_43.jpeg?w=700&q=90",
     category: "makanan",
     popular: true,
@@ -14,12 +14,12 @@ export const products: Product[] = [
   {
     id: 2,
     name: "Bakso Aci",
-    description: "Kuahnya gurih, isi berbagai macam (Keju, Telur, Ayam) dan kenyal. Disajikan dengan kuah yang kaya rasa.",
-    price: 10.000,
+    description: "Kuahnya gurih, isi berbagai macam (Keju, Tulang Rangu, Ayam) dan kenyal. Disajikan dengan kuah yang kaya rasa.",
+    price: 10000,
     image: "https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2023/08/03043442/ternyata-mudah-ini-resep-bakso-aci-gurih-nan-lezat.jpg.webp",
     category: "makanan",
     popular: true,
-    ingredients: ["Beef Patties", "Cheddar Cheese", "Lettuce", "Tomato", "Special Sauce", "Brioche Bun"]
+    ingredients: ["Aci", "Ayam Suwir", "Keju", "Tulang Rangu", "Cabai", "Penyedap Rasa"]
   },
   {
     id: 3,
