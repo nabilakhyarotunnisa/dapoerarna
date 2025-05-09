@@ -1,26 +1,26 @@
-const dotenv = require("dotenv");
-dotenv.config(); // Memuat variabel dari .env
-
-const mongoose = require("mongoose");
-const express = require("express");
-const userRoutes = require("./routes/userRoutes");
+// api/server.js
+const express = require('express');
+const mongoose = require('mongoose');
+require('dotenv').config();
 
 const app = express();
+const PORT = process.env.PORT || 5000;
 
-// Middleware untuk parsing JSON
+// Middleware
 app.use(express.json());
 
-// Rute untuk user
-app.use("/api/users", userRoutes);
+// Routes
+const apiRoutes = require('./routes'); // Pastikan routes diekspor sebagai router function
+app.use('/api', apiRoutes);
 
-// Koneksi ke MongoDB
-mongoose
-  .connect(process.env.MONGODB_URI)
-  .then(() => console.log("MongoDB Connected"))
-  .catch((err) => console.log("Error connecting to MongoDB:", err));
-
-// Jalankan server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+// Database connection
+mongoose.connect(process.env.MONGODB_URI)
+  .then(() => {
+    console.log('✅ MongoDB connected');
+    app.listen(PORT, () => {
+      console.log(`🚀 Server is running on http://localhost:${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.error('❌ Database connection error:', err);
+  });
